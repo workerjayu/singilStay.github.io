@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#151a3d">
+<title>Singil Stay · Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+<style>
+  :root {
+    --night: #151a3d;      /* frame colour of the guide images */
+    --night-2: #1f2550;
+    --gate: #1d5fd1;       /* the blue gate */
+    --gate-light: #4d86ec;
+    --sign: #ffd23f;       /* yellow step label */
+    --paper: #f5f6fb;
+    --muted: #b6bbdb;
+    --radius: 14px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(64px + env(safe-area-inset-top, 0px)); }
+  body {
+    margin: 0;
+    font-family: "Nanum Gothic", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    background: var(--night);
+    color: var(--paper);
+    line-height: 1.55;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    word-break: keep-all;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+
+  /* top bar */
+  .bar {
+    position: sticky; top: 0; z-index: 10;
+    padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;
+    background: rgba(21, 26, 61, .92);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .brand { font-weight: 800; font-size: 1.05rem; letter-spacing: -.01em; margin: 0; }
+  .brand span { color: var(--gate-light); }
+  .lang { display: flex; background: var(--night-2); border-radius: 999px; padding: 3px; }
+  .lang button {
+    font: inherit; font-weight: 700; font-size: .9rem;
+    border: 0; border-radius: 999px; padding: 8px 14px; min-height: 40px;
+    background: transparent; color: var(--muted); cursor: pointer;
+  }
+  .lang button[aria-pressed="true"] { background: var(--paper); color: var(--night); }
+
+  main { max-width: 640px; margin: 0 auto; padding: 0 0 48px; }
+
+  .intro { padding: 22px 16px 8px; }
+  .intro h1 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 6px; font-weight: 800; }
+  .intro p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .chip {
+    font-size: .85rem; font-weight: 700; padding: 6px 12px; border-radius: 999px;
+    background: var(--night-2); color: var(--paper); text-decoration: none;
+  }
+  .chip.alt { background: transparent; border: 1px solid var(--gate-light); color: var(--gate-light); }
+
+  /* steps */
+  ol.steps { list-style: none; margin: 0; padding: 0; }
+  .step { padding: 18px 0 6px; }
+  .step-head { display: flex; align-items: flex-start; gap: 12px; padding: 0 16px 10px; }
+  .num {
+    flex: none; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--sign); color: var(--night);
+    display: grid; place-items: center; font-weight: 800; font-size: 1rem;
+  }
+  .step h2 { margin: 4px 0 0; font-size: 1.12rem; font-weight: 800; line-height: 1.35; }
+  .step.map .num { background: var(--paper); font-size: .9rem; }
+  .shot { display: block; background: var(--night-2); }
+  .shot img { width: 100%; }
+
+  /* arrival */
+  .arrive {
+    margin: 20px 16px 8px; padding: 22px 20px; border-radius: var(--radius);
+    background: var(--gate); color: #fff; text-align: center;
+    box-shadow: inset 0 0 0 4px rgba(255,255,255,.15);
+  }
+  .arrive strong { display: block; font-size: 1.35rem; font-weight: 800; margin-bottom: 4px; }
+  .arrive p { margin: 0; font-size: 1rem; }
+
+  /* sections */
+  .section-title { font-size: 1.05rem; font-weight: 800; margin: 32px 16px 10px; }
+  details.short {
+    margin: 28px 16px 0; border-radius: var(--radius);
+    background: var(--night-2); overflow: hidden;
+  }
+  details.short summary {
+    list-style: none; cursor: pointer; padding: 16px 18px; min-height: 56px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    font-weight: 800; font-size: 1.05rem;
+  }
+  details.short summary::-webkit-details-marker { display: none; }
+  details.short summary small { display: block; font-weight: 400; color: var(--muted); font-size: .85rem; margin-top: 2px; }
+  details.short summary::after {
+    content: "+"; flex: none; width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center; background: var(--gate); font-size: 1.2rem;
+  }
+  details.short[open] summary::after { content: "–"; }
+  details.short .steps { margin: 0 -16px; }
+  details.short .num { background: var(--gate-light); color: #fff; }
+  details.short .inner { padding-bottom: 12px; }
+
+  .hint { text-align: center; color: var(--muted); font-size: .8rem; margin: 6px 16px 0; }
+
+  button:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid var(--sign); outline-offset: 2px; }
+
+  [hidden] { display: none !important; }
+
+  @media (min-width: 680px) {
+    main { padding-top: 12px; }
+    .shot { margin: 0 16px; border-radius: var(--radius); overflow: hidden; }
+    details.short .steps { margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <p class="brand">Singil <span>Stay</span></p>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-set-lang="en" aria-pressed="true">English</button>
+    <button type="button" data-set-lang="ko" aria-pressed="false">한국어</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= ENGLISH ================= -->
+  <section data-lang="en">
+    <div class="intro">
+      <h1>From Singil Station to the blue gate</h1>
+      <p>Line 1, Exit ① · about 500 m, 5 minutes on foot.</p>
+      <div class="chips">
+        <a class="chip" href="#en-arrive">Show the gate</a>
+        <a class="chip alt" href="#en-short">No luggage? Shortcut</a>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li class="step map">
+        <div class="step-head"><span class="num">🗺️</span><h2>Full route</h2></div>
+        <a class="shot" href="1.jpg"><img src="1.jpg" width="1302" height="1029" alt="Map of the walking route from Singil Station Exit 1 to the guesthouse"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">1</span><h2>Come out of Exit ①</h2></div>
+        <a class="shot" href="2.jpg"><img src="2.jpg" width="1089" height="973" loading="lazy" alt="Singil Station Exit 1"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">2</span><h2>Go straight until you reach the crosswalk</h2></div>
+        <a class="shot" href="3.jpg"><img src="3.jpg" width="1228" height="971" loading="lazy" alt="Walk straight along the road"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">3</span><h2>Cross at the crosswalk</h2></div>
+        <a class="shot" href="4.jpg"><img src="4.jpg" width="1151" height="740" loading="lazy" alt="The crosswalk"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">4</span><h2>Walk straight toward Yeongdeungpo Girls’ High School</h2></div>
+        <a class="shot" href="5.jpg"><img src="5.jpg" width="1280" height="937" loading="lazy" alt="Yeongdeungpo Girls' High School building ahead"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">5</span><h2>Pass the CU convenience store</h2></div>
+        <a class="shot" href="6.jpg"><img src="6.jpg" width="893" height="718" loading="lazy" alt="CU convenience store on the right"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">6</span><h2>After the brick wall, take the stairs just up the alley on the right</h2></div>
+        <a class="shot" href="7.jpg"><img src="7.jpg" width="1126" height="778" loading="lazy" alt="Alley and stairs on the right"></a>
+      </li>
+      <li class="step" id="en-arrive">
+        <div class="step-head"><span class="num">7</span><h2>The blue gate, No. 24. You’re here</h2></div>
+        <a class="shot" href="8.jpg"><img src="8.jpg" width="1262" height="829" loading="lazy" alt="The blue gate at Yeongdeungpo-ro 62-gil 24"></a>
+      </li>
+    </ol>
+
+    <div class="arrive">
+      <strong>You made it!</strong>
+      <p>Push the blue gate to open it.</p>
+    </div>
+
+    <h2 class="section-title">Getting around from here</h2>
+    <a class="shot" href="map_blue.jpg"><img src="map_blue.jpg" width="2576" height="2191" loading="lazy" alt="Seoul metro map with travel times from Singil"></a>
+    <p class="hint">Tap any image to open it full size and zoom in.</p>
+
+    <details class="short" id="en-short">
+      <summary><span>Shortcut, 180 m · 2 min<small>Route from the gate to the station. No suitcase only (stairs). Coming in, walk it in reverse.</small></span></summary>
+      <div class="inner">
+        <ol class="steps">
+          <li class="step map">
+            <div class="step-head"><span class="num">🗺️</span><h2>Shortcut route</h2></div>
+            <a class="shot" href="s1.jpg"><img src="s1.jpg" width="1234" height="690" loading="lazy" alt="Shortcut route map"></a>
+          </li>
+          <li class="step">
+            <div class="step-head"><span class="num">1</span><h2>Leave the gate and go down the stairs, then right</h2></div>
+            <a class="shot" href="s2.jpg"><img src="s2.jpg" width="1222" height="959" loading="lazy" alt="Stairs and alley right outside the guesthouse"></a>
+          </li>
+          <li class="step">
+            <div class="step-head"><span class="num">2</span><h2>Follow the alley past the pink wall</h2></div>
+            <a class="shot" href="s3.jpg"><img src="s3.jpg" width="1227" height="960" loading="lazy" alt="Pink wall at the corner"></a>
+          </li>
+          <li class="step">
+            <div class="step-head"><span class="num">3</span><h2>Under the overpass is the subway entrance</h2></div>
+            <a class="shot" href="s4.jpg"><img src="s4.jpg" width="1223" height="959" loading="lazy" alt="Overpass with the metro entrance underneath; stairs on the left go to the bus stop"></a>
+          </li>
+        </ol>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= 한국어 ================= -->
+  <section data-lang="ko" hidden>
+    <div class="intro">
+      <h1>신길역에서 파란 대문까지</h1>
+      <p>1호선 1번 출구 · 약 500m, 걸어서 5분</p>
+      <div class="chips">
+        <a class="chip" href="#ko-arrive">대문 사진 보기</a>
+        <a class="chip alt" href="#ko-short">짐이 없다면 지름길</a>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li class="step map">
+        <div class="step-head"><span class="num">🗺️</span><h2>전체 지도</h2></div>
+        <a class="shot" href="1.jpg"><img src="1.jpg" width="1302" height="1029" alt="신길역 1번 출구에서 숙소까지 도보 경로 지도"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">1</span><h2>1번 출구로 나오세요</h2></div>
+        <a class="shot" href="2.jpg"><img src="2.jpg" width="1089" height="973" loading="lazy" alt="신길역 1번 출구"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">2</span><h2>횡단보도가 나올 때까지 직진하세요</h2></div>
+        <a class="shot" href="3.jpg"><img src="3.jpg" width="1228" height="971" loading="lazy" alt="길을 따라 직진"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">3</span><h2>횡단보도를 건너세요</h2></div>
+        <a class="shot" href="4.jpg"><img src="4.jpg" width="1151" height="740" loading="lazy" alt="횡단보도"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">4</span><h2>영등포여자고등학교 건물을 바라보며 직진</h2></div>
+        <a class="shot" href="5.jpg"><img src="5.jpg" width="1280" height="937" loading="lazy" alt="정면의 영등포여고 건물"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">5</span><h2>CU 편의점을 지나서</h2></div>
+        <a class="shot" href="6.jpg"><img src="6.jpg" width="893" height="718" loading="lazy" alt="오른쪽 CU 편의점"></a>
+      </li>
+      <li class="step">
+        <div class="step-head"><span class="num">6</span><h2>담벼락을 지나 오른쪽 골목 바로 위 계단</h2></div>
+        <a class="shot" href="7.jpg"><img src="7.jpg" width="1126" height="778" loading="lazy" alt="오른쪽 골목과 계단"></a>
+      </li>
+      <li class="step" id="ko-arrive">
+        <div class="step-head"><span class="num">7</span><h2>24번지 파란 대문, 도착!</h2></div>
+        <a class="shot" href="8.jpg"><img src="8.jpg" width="1262" height="829" loading="lazy" alt="영등포로62길 24 파란 대문"></a>
+      </li>
+    </ol>
+
+    <div class="arrive">
+      <strong>도착했어요! 대단해요!</strong>
+      <p>파란 대문은 밀어서 열어주세요.</p>
+    </div>
+
+    <h2 class="section-title">여기서 가는 길</h2>
+    <a class="shot" href="map_blue.jpg"><img src="map_blue.jpg" width="2576" height="2191" loading="lazy" alt="신길역 기준 소요시간이 표시된 서울 지하철 노선도"></a>
+    <p class="hint">사진을 누르면 원본 크기로 열려서 확대해 볼 수 있어요.</p>
+
+    <details class="short" id="ko-short">
+      <summary><span>지름길 180m · 2분<small>숙소에서 역으로 가는 길이에요. 계단이 있어 캐리어 없을 때만! 올 때는 반대로 오세요.</small></span></summary>
+      <div class="inner">
+        <ol class="steps">
+          <li class="step map">
+            <div class="step-head"><span class="num">🗺️</span><h2>지름길 지도</h2></div>
+            <a class="shot" href="s1.jpg"><img src="s1.jpg" width="1234" height="690" loading="lazy" alt="지름길 경로 지도"></a>
+          </li>
+          <li class="step">
+            <div class="step-head"><span class="num">1</span><h2>대문을 나와 계단을 내려간 뒤 골목으로</h2></div>
+            <a class="shot" href="s2.jpg"><img src="s2.jpg" width="1222" height="959" loading="lazy" alt="숙소 앞 계단과 골목"></a>
+          </li>
+          <li class="step">
+            <div class="step-head"><span class="num">2</span><h2>분홍색 벽 옆 골목을 따라가세요</h2></div>
+            <a class="shot" href="s3.jpg"><img src="s3.jpg" width="1227" height="960" loading="lazy" alt="모퉁이의 분홍색 벽"></a>
+          </li>
+          <li class="step">
+            <div class="step-head"><span class="num">3</span><h2>고가 아래가 지하철 입구예요</h2></div>
+            <a class="shot" href="s4.jpg"><img src="s4.jpg" width="1223" height="959" loading="lazy" alt="고가 아래 지하철 입구, 왼쪽 계단은 버스 정류장"></a>
+          </li>
+        </ol>
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('[data-set-lang]');
+  var sections = document.querySelectorAll('section[data-lang]');
+
+  function setLang(lang) {
+    sections.forEach(function (s) { s.hidden = s.dataset.lang !== lang; });
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)); });
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('singil-lang', lang); } catch (e) {}
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.setLang); window.scrollTo(0, 0); });
+  });
+
+  // open the shortcut panel when its chip is tapped
+  document.querySelectorAll('a[href$="-short"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var d = document.querySelector(a.getAttribute('href'));
+      if (d) d.open = true;
+    });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem('singil-lang'); } catch (e) {}
+  var lang = saved || ((navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en');
+  setLang(lang);
+})();
+</script>
+</body>
+</html>
